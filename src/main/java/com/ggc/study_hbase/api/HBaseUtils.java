@@ -17,13 +17,15 @@ public class HBaseUtils {
     static {
         try {
             Configuration conf = HBaseConfiguration.create();
-            conf.set("hbase.zookeeper.quorum", "node1,node2,node3");
+//            conf.set("hbase.zookeeper.quorum", "node1,node2,node3");
+            conf.set("hbase.zookeeper.quorum", "ggc");
             conf.set("hbase.zookeeper.property.clientPort", "2181");
             connection = ConnectionFactory.createConnection(conf);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     public static void createTable(String tableName, String... columnFamilies) throws IOException {
         Admin admin = connection.getAdmin();
@@ -195,7 +197,7 @@ public class HBaseUtils {
     public static void main(String[] args) throws IOException {
 //        createTable("class", "info");
 //        modifyTable("class", "info");
-//        deleteTable("class");
+        deleteTable("class");
 
 //        createTable("person", "info");
 //        putCell("person", "1001", "info", "name", "张三");
@@ -207,7 +209,7 @@ public class HBaseUtils {
 //        scanTableByFilter("student", "info", "name", "zs");
 
 //        deleteRow("student", "1001");
-        deleteColumn("student", "1002", "info", "name");
+//        deleteColumn("student", "1002", "info", "name");
 
     }
 }
