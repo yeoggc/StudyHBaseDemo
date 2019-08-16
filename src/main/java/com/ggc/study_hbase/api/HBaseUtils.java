@@ -183,8 +183,8 @@ public class HBaseUtils {
 
     public static void deleteColumn(String tableName, String rowKey, String columnFamily, String column) throws IOException {
 
-        Table table = connection.getTable(TableName.valueOf(tableName));
 
+        Table table = connection.getTable(TableName.valueOf(tableName));
         Delete delete = new Delete(Bytes.toBytes(rowKey));
 
 //        delete.addColumns();//删除所有版本
